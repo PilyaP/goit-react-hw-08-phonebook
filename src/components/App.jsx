@@ -21,7 +21,7 @@ const ContactsPage = lazy(() => import('./pages/Contacts'));
 const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-  
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
