@@ -58,7 +58,7 @@ const App = () => {
             }
           />
         </Route>
-        <Route path="*" element={'NotFound'} />
+        <Route path="*" element={'Максим, все зламалось🤯!'} />
       </Routes>
     </Suspense>
   );
