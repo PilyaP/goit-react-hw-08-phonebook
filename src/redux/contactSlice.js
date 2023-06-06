@@ -10,15 +10,24 @@ import {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
-    contacts: [{ id: '12321', name: 'John', number: '123-12-15' }],
+    contacts: [],
+    favoriteContactIds: [],
     isLoading: false,
     error: '',
   },
   reducers: {
-    // addContact: (state, {payload}) => {
-    //   state.contacts.push(payload);
-    //   //   state.contacts = [...state.contacts, action.payload];
-    // },
+    toggleFavorite: (state, { payload }) => {
+      const isContactFavorite = state.favoriteContactIds.some(
+        contactId => contactId === payload
+      );
+      if (isContactFavorite) {
+        state.favoriteContactIds = state.favoriteContactIds.filter(
+          contactId => contactId !== payload
+        );
+      } else {
+        state.favoriteContactIds = [...state.favoriteContactIds, payload];
+      }
+    },
     // deleteContact: (state, action) => {
     //   state.contacts = state.contacts.filter(
     //     contact => contact.id !== action.payload
@@ -67,7 +76,7 @@ const contactsSlice = createSlice({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['contacts'],
+  whitelist: ['favoriteContactIds'],
 };
 export const persistedContactsReducer = persistReducer(
   persistConfig,
@@ -75,4 +84,4 @@ export const persistedContactsReducer = persistReducer(
 );
 
 // Action generator
-// export const { addContact, deleteContact } = contactsSlice.actions;
+export const { toggleFavorite } = contactsSlice.actions;

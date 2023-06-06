@@ -16,6 +16,17 @@ export const ContactsItem = styled.li`
     color: #666;
   }
 
+  .icon.active {
+    path {
+      fill: red;
+    }
+  }
+  .fav-btn {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+  } 
   .bnt-name {
     width: 70px;
     border: none;

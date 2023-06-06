@@ -9,27 +9,27 @@ export const RegisterForm = () => {
     const form = e.currentTarget;
     dispatch(
       register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        name: form.elements.name.value.trim(),
+        email: form.elements.email.value.trim(),
+        password: form.elements.password.value.trim(),
       })
     );
     form.reset();
   };
 
   return (
-    <form className='' onSubmit={handleSubmit} autoComplete="off">
+    <form className="" onSubmit={handleSubmit} autoComplete="off">
       <label className="">
         Username
-        <input type="text" name="name" />
+        <input type="text" name="name" required />
       </label>
       <label className="">
         Email
-        <input type="email" name="email" />
+        <input type="email" name="email" required />
       </label>
       <label className="">
         Password
-        <input type="password" name="password" />
+        <input type="password" name="password" required />
       </label>
       <button type="submit">Register</button>
     </form>

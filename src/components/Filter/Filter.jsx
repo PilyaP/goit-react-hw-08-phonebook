@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FilterItem } from './Filter.styled';
+import { FilterItem, StyledSearchInput } from './Filter.styled';
+
 // import { useDispatch, useSelector } from 'react-redux';
 // const Filter = ({ title }) => {
 //   const dispatch = useDispatch();
@@ -8,12 +9,14 @@ import { FilterItem } from './Filter.styled';
 const Filter = ({ filter, changeFilterInput, title }) => (
   //  return (
   <FilterItem>
-    <h2 className="filter-title">{title}</h2>
+    {title && <h2 className="filter-title">{title}</h2>}
     <div className="find-filter">
       <label className="filter-label">Find contacts by name</label>
-      <input
-        className="filter-input"
-        type="text"
+      <StyledSearchInput
+        id="filled-search"
+        label="Search field"
+        type="search"
+        variant="filled"
         name="name"
         value={filter}
         onChange={changeFilterInput}
@@ -23,7 +26,7 @@ const Filter = ({ filter, changeFilterInput, title }) => (
 );
 
 Filter.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   filter: PropTypes.string.isRequired,
   changeFilterInput: PropTypes.func.isRequired,
 };

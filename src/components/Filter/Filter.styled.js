@@ -1,4 +1,19 @@
 import styled from '@emotion/styled';
+import TextField from '@mui/material/TextField';
+
+export const StyledSearchInput = styled(TextField)`
+  .MuiInputBase-formControl {
+    background-color: transparent;
+    &:hover {
+      background-color: blue;
+    }
+  }
+  .MuiInputBase-inputTypeSearch {
+    &:focus {
+      background-color: red;
+    }
+  }
+`;
 
 export const FilterItem = styled.form`
   .filter-label {
@@ -22,9 +37,7 @@ export const FilterItem = styled.form`
   }
   .filter-input:focus {
     outline: none;
-    
   }
- 
 
   .filter-title {
     margin-top: 0;

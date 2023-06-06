@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 const ContactForm = ({ onSubmit, title }) => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');  
+  const [number, setNumber] = useState('');
   // const dispatch = useDispatch();
-  
+
   const handleChange = event => {
     const { name, value } = event.target;
     if (name === 'name') {
@@ -18,7 +18,7 @@ const ContactForm = ({ onSubmit, title }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit({ name, number });
+    onSubmit({ name: name.trim(), number: number.trim() });
     setName('');
     setNumber('');
   };

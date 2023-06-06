@@ -6,6 +6,7 @@ export default function Register() {
     <div>
       <Helmet>
         <title>Registration</title>
+        <meta name="title" content={`HELLO IT's meta info`}/>
       </Helmet>
       <RegisterForm />
     </div>

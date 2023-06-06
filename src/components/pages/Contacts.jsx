@@ -3,6 +3,7 @@ import ContactForm from 'components/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import Loader from 'components/Loader/Loader';
+import { useAuth } from 'components/hooks';
 import { Notify } from 'notiflix';
 
 import { useEffect } from 'react';
@@ -15,22 +16,23 @@ import {
 import { setFilter } from 'redux/filterSlice';
 
 export default function Tasks() {
-  const contacts = useSelector(state => state.contacts.contacts);
+  const { isLoggedIn } = useAuth();
   const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts.contacts);
   const isLoading = useSelector(state => state.contacts.isLoading);
   const filter = useSelector(state => state.filter.filter);
 
-  const formSubmit = ({ name, phone }) => {
+  const formSubmit = ({ name, number }) => {
     const contact = {
       id: nanoid(),
       name,
-      phone,
+      number,
     };
 
     const isContactExist = contacts.some(
       i =>
         i.name.toLowerCase() === contact.name.toLowerCase() ||
-        i.phone === contact.phone
+        i.number === contact.number
     );
 
     if (isContactExist) {
@@ -41,8 +43,9 @@ export default function Tasks() {
   };
 
   useEffect(() => {
+    if (!isLoggedIn) return;
     dispatch(fetchContacts());
-  }, [dispatch]);
+  }, [dispatch, isLoggedIn]);
 
   const changeFilterInput = e => {
     dispatch(setFilter(e.target.value));
@@ -50,7 +53,7 @@ export default function Tasks() {
 
   const findContacts = () => {
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+      contact.name.toLowerCase().includes(filter.trim().toLowerCase()) // "     12" -> "12"
     );
   };
 
