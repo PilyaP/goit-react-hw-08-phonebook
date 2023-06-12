@@ -6,7 +6,7 @@ export const HeaderH = styled.div`
   align-items: center;
 
   flex-direction: row;
-  padding: 20px;
+  padding: 0px;
   border-bottom: 1px solid black;
   .header {
     padding: 5px;

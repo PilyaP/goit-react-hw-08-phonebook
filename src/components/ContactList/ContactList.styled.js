@@ -26,7 +26,12 @@ export const ContactsItem = styled.li`
     background-color: transparent;
     padding: 0;
     cursor: pointer;
-  } 
+  }
+  .iconbutton-delete:hover {
+     path {
+      fill: red;
+  }
+
   .bnt-name {
     width: 70px;
     border: none;
