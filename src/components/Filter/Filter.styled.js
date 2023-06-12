@@ -4,14 +4,6 @@ import TextField from '@mui/material/TextField';
 export const StyledSearchInput = styled(TextField)`
   .MuiInputBase-formControl {
     background-color: transparent;
-    &:hover {
-      background-color: blue;
-    }
-  }
-  .MuiInputBase-inputTypeSearch {
-    &:focus {
-      background-color: red;
-    }
   }
 `;
 

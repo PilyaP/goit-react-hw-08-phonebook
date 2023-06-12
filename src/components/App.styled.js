@@ -6,5 +6,5 @@ export const Container = styled.div`
   width: 480px;
   min-height: 100vh;
   box-shadow: 0px 0px 10px;
-`;
 
+`;

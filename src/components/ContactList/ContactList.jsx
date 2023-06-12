@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const ContactList = ({ contacts, deleteContact }) => {
   const dispatch = useDispatch();
+
   const favContactsIds = useSelector(
     state => state.contacts.favoriteContactIds
   );
@@ -97,3 +98,50 @@ ContactList.propTypes = {
 };
 
 export default ContactList;
+// import React, { useState } from 'react';
+// import List from 'your-list-library';
+// import ItemDragging from 'your-item-dragging-library';
+
+// const App = () => {
+//   const [plannedTasks, setPlannedTasks] = useState([]);
+//   const [doingTasks, setDoingTasks] = useState([]);
+
+//   const onDragStart = (e) => {
+//     // Handle drag start event
+//   };
+
+//   const onAdd = (e) => {
+//     const tasks = [...e.toData];
+//     tasks.splice(e.toIndex, 0, e.itemData);
+//     e.toData === 'plannedTasks' ? setPlannedTasks(tasks) : setDoingTasks(tasks);
+//   };
+
+//   const onRemove = (e) => {
+//     const tasks = [...e.fromData];
+//     tasks.splice(e.fromIndex, 1);
+//     e.fromData === '' ? setPlannedTasks(tasks) : setDoingTasks(tasks);
+//   };
+
+//   const onReorder = (e) => {
+//     onRemove(e);
+//     onAdd(e);
+//   };
+
+//   return (
+//     <div className="widget-container">
+//       <List dataSource={plannedTasks} keyExpr="id">
+//         <ItemDragging
+//           allowReordering={true}
+//           group="tasks"
+//           data=""
+//           onDragStart={onDragStart}
+//           onAdd={onAdd}
+//           onRemove={onRemove}
+//           onReorder={onReorder}
+//         />
+//       </List>
+//     </div>
+//   );
+// };
+
+// export default App;

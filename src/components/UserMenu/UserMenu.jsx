@@ -5,6 +5,7 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { stringAvatar } from 'utils/avatarHelpers';
 import Button from '@mui/material/Button';
+import { Menu } from './UserMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export const UserMenu = () => {
   if(!user) return <div>Loading...</div>
 
   return (
-    <div className="">
+    <Menu>
       <Stack alignItems="center" direction="row" spacing={2}>
         <Avatar {...stringAvatar(user.name)} />
         <span>Welcome, {user.name}</span>
@@ -22,6 +23,6 @@ export const UserMenu = () => {
         Logout
       </Button>
       {/* <p className="">Welcome, {user.name}</p> */}
-    </div>
+    </Menu>
   );
 };
